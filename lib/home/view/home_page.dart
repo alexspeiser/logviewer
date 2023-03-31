@@ -42,10 +42,9 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final selectedTab = context.select((HomeCubit cubit) => cubit.state.tab);
-    final token = context.select((AuthenticationBloc auth) => auth.state.token);
 
     return Scaffold(
-      appBar: AppBar(title: Text('LogViewer Demo $token ')),
+      appBar: AppBar(title: Text('LogViewer Demo')),
       body: Column(
         children: [SelectorView(), Expanded(child: SwipeDetector())],
       ),

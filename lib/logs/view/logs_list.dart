@@ -16,7 +16,14 @@ class _LogsListState extends State<LogsList> {
   Widget build(BuildContext context) {
     return BlocBuilder<LogsBloc, LogsState>(
       builder: (context, state) {
-        return Stack(children: [LogsListView(state: state)]);
+        return Column(children: [
+          Expanded(
+              child: Container(
+                  width: double.infinity,
+                  height: double.infinity,
+                  color: Colors.transparent,
+                  child: LogsListView(state: state)))
+        ]);
       },
     );
   }
