@@ -54,12 +54,26 @@ class LogsBloc extends Bloc<LogsEvent, LogsState> {
       final logs = await _fetchLogs();
       emit(state.copyWith(
         status: LogsStatus.success,
-        logs: List.of(state.logs)..addAll(logs),
+        logs: logs,
       ));
     } catch (_) {
       emit(state.copyWith(status: LogsStatus.failure));
     }
   }
+
+  // Future<List<Log>> _fetchLogsMock() async {
+  //   List<Log> logs2 = [];
+
+  //   for (int i = 0; i < DateTime.now().second; i++) {
+  //     logs2.add(Log(
+  //         id: i.toString(),
+  //         content: DateTime.now().toString(),
+  //         time: DateTime.now()));
+  //   }
+
+  //   debugPrint(logs2.toString());
+  //   return logs2;
+  // }
 
   Future<List<Log>> _fetchLogs() async {
     final logsRequest = Uri.https('myhoursdevelopment-api.azurewebsites.net',
